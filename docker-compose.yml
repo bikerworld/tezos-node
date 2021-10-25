@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  tezos:
+    image: tezos/tezos:v10.3
+    command: ["tezos-node", "--history-mode", "experimental-rolling", "--cors-header=content-type", "--cors-origin=*"]
+    hostname: node
+    restart: 'always'
+    ports:
+      - 8732:8732
+      - 9732:9732
+    volumes:
+       - tezos-data:/var/run/tezos/node
+
+  # to import a rolling snapshot, save snapshot as a file named snapshot in current directory
+  # delete your old tezos-data docker volume
+  # docker-compose run rolling
+  import:
+    profiles:
+      - import
+    image: tezos/tezos:v10.3
+    command: ["tezos-snapshot-import", "--rolling"]
+    hostname: node
+    restart: 'no'
+    volumes:
+       - tezos-data:/var/run/tezos/node
+       - ./snapshot:/snapshot
+
+volumes:
+  tezos-data:
+    external: true
