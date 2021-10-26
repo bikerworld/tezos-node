@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   tezos:
+    container_name: tezos
     image: tezos/tezos:v10.3
     command: ["tezos-node", "--history-mode", "experimental-rolling", "--cors-header=content-type", "--cors-origin=*"]
     hostname: node
@@ -11,6 +12,11 @@ services:
       - 9732:9732
     volumes:
        - tezos-data:/var/run/tezos/node
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: "25m"
 
   # to import a rolling snapshot, save snapshot as a file named snapshot in current directory
   # delete your old tezos-data docker volume
