@@ -36,6 +36,14 @@ On first start, you should see the container generating an identity (can take a 
 
 Last, keep in mind that if you run this on your own personal computer, each time you stop your computer, when you relaunch the node, you will have to wait for it to catch up with all blockchains transactions that happened while the node was offline, it can take a few minutes or a few hours depending of how long your node was offline.
 
+# How to use my new tezos node in Temple Wallet ?
+
+In Temple Wallet, you need to add a new node by following [MadFish explaination](https://madfish.crunch.help/temple-wallet/how-to-add-a-custom-rpc-to-the-temple-wallet)
+
+* If you installed your node on your computer, just switch to the predefined localhost node in Temple Wallet
+* If you installed your node on a VPS/server, for RPC URL, use http://server.ip:8732
+
+For Lambda view, use: KT1CPuTzwC7h7uLXd5WQmpMFso1HxrLBUtpE
 
 # Need help ?
 
