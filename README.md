@@ -32,7 +32,18 @@ docker-compose up -d tezos
 docker-compose logs -f tezos
 ```
 
-On first start, you should see the container generating an identity (can take a few minutes), and then starting to catch up the missing block since the snapshot you imported. It can take a few minutes or a few hours depending on the hardware you run it. Once the node is fully synced, you can start to use it with Temple Wallet to make your transactions.
+On first start, you should see the container generating an identity (can take a few minutes), and then starting to catch up the missing block since the snapshot you imported. It can take a few minutes or a few hours depending on the hardware you run it. Once the node is fully synced, you can start to use it with Temple Wallet to make your transactions. The catch up game is done when you see something like this in the logs
+```
+Oct 26 00:55:31.832 - validator.chain: Chain is bootstrapped
+Oct 26 00:55:31.832 - validator.chain: Sync_status: sync
+```
+
+You can also check the status of the sync process with the following command
+```
+docker exec -it CONTAINER_NAME_OR_ID tezos-client bootstrapped
+```
+If the sync is done, you'll see a message saying `Node is bootstrapped.`
+
 
 Last, keep in mind that if you run this on your own personal computer, each time you stop your computer, when you relaunch the node, you will have to wait for it to catch up with all blockchains transactions that happened while the node was offline, it can take a few minutes or a few hours depending of how long your node was offline.
 
