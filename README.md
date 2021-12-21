@@ -13,7 +13,11 @@ This document help you to run a lighweight tezos-node (in rolling mode). It will
 docker volume create --name tezos-data
 ```
 
-3. download the last **rolling snapshot** that you can find on https://mainnet.xtz-shots.io/ and store it in the same directory as your docker-compose.yml file, under the name **snapshot**
+3. download the last **rolling snapshot** and store it in the same directory as your docker-compose.yml file, under the name **snapshot**. You can download snapshots from:
+
+* https://snapshots-tezos.giganode.io/
+* https://mainnet.xtz-shots.io/
+
 
 4. import the snapshot by running (if you get any error, you will have to delete and recreate the docker volume)
 ```
