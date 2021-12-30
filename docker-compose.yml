@@ -4,7 +4,7 @@ services:
   tezos:
     container_name: tezos
     image: tezos/tezos:v11.0
-    command: ["tezos-node", "--history-mode", "experimental-rolling", "--cors-header=content-type", "--cors-origin=*"]
+    command: ["tezos-node", "--history-mode=experimental-rolling", "--cors-header=content-type", "--cors-origin=*", "--rpc-addr=0.0.0.0:8732", "--allow-all-rpc=0.0.0.0:8732"]
     hostname: node
     restart: 'always'
     ports:
