@@ -77,6 +77,8 @@ docker-compose up -d swag
 
 If everything works, then you can configure temple wallet with the url https://mynode.mydomain.com
 
+If you don't have a domain name, SWAG can be configured to use a free [DuckDNS](https://www.duckdns.org/) subdomain. Just check [SWAG example](https://docs.linuxserver.io/general/swag#create-container-via-duckdns-validation-with-a-wildcard-cert) and adapt .env file and your nginx config accordingly.
+
 
 
 # Need help ?
