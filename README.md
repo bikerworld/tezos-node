@@ -60,6 +60,25 @@ In Temple Wallet, you need to add a new node by following [MadFish explaination]
 
 For Lambda view, use: KT1CPuTzwC7h7uLXd5WQmpMFso1HxrLBUtpE
 
+# SSL proxy
+
+Recent version of Temple Wallet ask you to use an https connection if the node is not a local node (ie when you host your node on a remote server). The docker-compose file now include a swag reverse proxy, which use Let's Encrypt to get SSL cert. Configuring and using SWAG is out of this scope and you can [read documentation here](https://hub.docker.com/r/linuxserver/swag).
+
+Still, it should be as simple as
+
+1. Copy template.env to .env, and set settings according to your needs (proper owned domain name must be set)
+
+2. Edit tznode.conf to set your server domain name
+
+3. launch
+```
+docker-compose up -d swag
+```
+
+If everything works, then you can configure temple wallet with the url https://mynode.mydomain.com
+
+
+
 # Need help ?
 
 I run this without any problem, on a Linux VPS (2CPU, 4Gb of RAM, 40Gb of SSD). While writing this doc, I also tried every step on a Mac M1 and it worked without any glitch.
