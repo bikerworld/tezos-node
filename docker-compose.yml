@@ -18,6 +18,24 @@ services:
         max-file: "2"
         max-size: "25m"
 
+  # reverse proxy to hide behind a domain name for temple wallet
+  # config through .env file
+  swag:
+    image: linuxserver/swag
+    container_name: swag
+    cap_add:
+      - NET_ADMIN
+    env_file:
+      - .env
+    volumes:
+      - ./swag:/config
+      - ./tznode.conf:/config/nginx/site-confs/tznode.conf
+    ports:
+      - 443:443
+      - 80:80 #optional
+    restart: 'always'
+
+
   # to import a rolling snapshot, save snapshot as a file named snapshot in current directory
   # delete your old tezos-data docker volume
   # docker-compose run rolling
