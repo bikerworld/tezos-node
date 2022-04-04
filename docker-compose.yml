@@ -3,7 +3,7 @@ version: "3.8"
 services:
   tezos:
     container_name: tezos
-    image: tezos/tezos:v12.0
+    image: tezos/tezos:v12.2
     command: ["tezos-node", "--history-mode=rolling:0", "--force-history-mode-switch", "--cors-header=content-type", "--cors-origin=*", "--rpc-addr=0.0.0.0:8732", "--allow-all-rpc=0.0.0.0:8732"]
     hostname: node
     restart: 'always'
@@ -42,7 +42,7 @@ services:
   import:
     profiles:
       - import
-    image: tezos/tezos:v11.1
+    image: tezos/tezos:v12.2
     command: ["tezos-snapshot-import", "--rolling"]
     hostname: node
     restart: 'no'
