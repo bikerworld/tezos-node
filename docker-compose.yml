@@ -1,15 +1,17 @@
-version: "3.8"
+version: "4"
 
 services:
   tezos:
     container_name: tezos
-    image: tezos/tezos:latest-release
-    command: ["tezos-node", "--history-mode=rolling:0", "--force-history-mode-switch", "--cors-header=content-type", "--cors-origin=*", "--rpc-addr=0.0.0.0:8732", "--allow-all-rpc=0.0.0.0:8732"]
+    image: tezos/tezos:latest
+    command: ["tezos-node", "--history-mode=rolling:0", "--force-history-mode-switch"]
     hostname: node
     restart: 'always'
     ports:
       - 8732:8732
       - 9732:9732
+    environment:
+      NODE_RPC_ADDR: "0.0.0.0"
     volumes:
        - tezos-data:/var/run/tezos/node
     logging:
@@ -42,8 +44,8 @@ services:
   import:
     profiles:
       - import
-    image: tezos/tezos:latest-release
-    command: ["tezos-snapshot-import", "--rolling"]
+    image: tezos/tezos:latest
+    command: ["tezos-snapshot-import"]
     hostname: node
     restart: 'no'
     volumes:
